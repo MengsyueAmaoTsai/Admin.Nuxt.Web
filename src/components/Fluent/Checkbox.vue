@@ -14,6 +14,22 @@
       @change="handleCheckedChanged"
     >
     </fluent-checkbox>
+
+    <span
+      v-if="props.label || props.ariaLabel || props.labelTemplate"
+      :aria-label="props.ariaLabel"
+    >
+      {{ props.label }}
+      {{ props.labelTemplate }}
+    </span>
+
+    <span
+      v-if="props.required"
+      aria-label="required"
+      aria-hidden="true"
+      style="color: var(--error)"
+      >*
+    </span>
   </div>
 </template>
 

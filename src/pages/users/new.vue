@@ -16,7 +16,7 @@
           :required="true"
         />
 
-        <Stack>
+        <Stack :orientation="Orientation.Vertical">
           <TextField
             v-model:value="password"
             v-model:disabled="autoGeneratePassword"
