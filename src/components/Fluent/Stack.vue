@@ -50,4 +50,14 @@ const classValue = new CssBuilder(props.class).build();
 const styleValue = new StyleBuilder(props.style).build();
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.stack-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.stack-horizontal {
+  display: flex;
+  flex-direction: row;
+}
+</style>
