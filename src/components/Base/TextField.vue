@@ -1,6 +1,13 @@
 <template>
   <div>
-    <!-- InputLabel -->
+    <!-- InputLabel @ChildContent=props.labelTemplate -->
+
+    <InputLabel
+      :forId="props.id"
+      :label="props.label"
+      :ariaLabel="props.ariaLabel"
+      :required="props.required"
+    ></InputLabel>
 
     <!-- @ref=? @attributes= -->
     <fluent-text-field
@@ -33,6 +40,8 @@
 
 <script setup lang="ts">
 import { InputAppearance } from "./types";
+
+const emit = defineEmits(["update:value"]);
 
 const props = defineProps({
   // ComponentPropsBase
@@ -105,11 +114,24 @@ onMounted(() => {
 
 const handleChange = (event: Event) => {
   const target = event.target as HTMLInputElement;
-  console.log("HandleChange", target.value);
+  emit("update:value", target.value);
 };
 
 const handleInput = (event: Event) => {
+  if (!props.immediate) {
+    console.log("Not immediate");
+    return;
+  }
+
   const target = event.target as HTMLInputElement;
-  console.log("HandleInput", target.value);
+
+  if (props.immediateDelay > 0) {
+    setTimeout(() => {
+      console.log("HandleInputDelay", target.value);
+      emit("update:value", target.value);
+    }, props.immediateDelay);
+  } else {
+    handleChange(event);
+  }
 };
 </script>

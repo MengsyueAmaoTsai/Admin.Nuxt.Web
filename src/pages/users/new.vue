@@ -1,15 +1,24 @@
 <template>
   <div>
     <div>
-      <TextField v-model="email" :textFieldType="TextFieldType.Email"
-        >Email</TextField
-      >
-
-      <TextField v-model="name">Name</TextField>
-
-      <TextField v-model="password" :textFieldType="TextFieldType.Password"
-        >Password</TextField
-      >
+      <TextField
+        v-model:value="email"
+        :label="'Email'"
+        :textFieldType="TextFieldType.Email"
+        :required="true"
+      />
+      <TextField
+        v-model:value="name"
+        :label="'Name'"
+        :textFieldType="TextFieldType.Text"
+        :required="true"
+      />
+      <TextField
+        v-model:value="password"
+        :label="'Password'"
+        :textFieldType="TextFieldType.Password"
+        :required="true"
+      />
     </div>
 
     <div>

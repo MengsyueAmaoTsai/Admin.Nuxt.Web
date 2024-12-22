@@ -1,3 +1,8 @@
+export enum Orientation {
+	Vertical = "vertical",
+	Horizontal = "horizontal",
+}
+
 export enum TextFieldType {
 	Text = "text",
 	Email = "email",
