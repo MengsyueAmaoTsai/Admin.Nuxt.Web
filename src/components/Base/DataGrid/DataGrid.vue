@@ -1,7 +1,5 @@
 <template>
   <div>
-    BaseDataGrid
-
     <table :id="props.id" :class="gridClass()" :style="styleValue">
       <thead v-if="props.generateHeader !== GenerateHeaderOption.None">
         <BaseDataGridRow>
