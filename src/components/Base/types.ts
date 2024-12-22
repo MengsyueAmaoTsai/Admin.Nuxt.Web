@@ -7,3 +7,9 @@ export enum Appearance {
 	Stealth = "stealth",
 	Filled = "filled",
 }
+
+export enum VerticalAlignment {
+	Top = "top",
+	Center = "center",
+	Bottom = "bottom",
+}
