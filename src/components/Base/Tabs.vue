@@ -1,6 +1,13 @@
 <template>
   <div>
-    <fluent-tabs>
+    <fluent-tabs
+      :id="props.id"
+      :class="classValue"
+      :style="styleValue"
+      :orientation="props.orientation"
+      :activeid="props.activeTabId"
+      :activeindicator="props.showActiveIndicator"
+    >
       <slot />
     </fluent-tabs>
   </div>
