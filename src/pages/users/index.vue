@@ -1,16 +1,36 @@
 <template>
   <div>
     <div style="display: flex">
-      <BaseButton :appearance="Appearance.Accent">New user</BaseButton>
-      <BaseButton :appearance="Appearance.Accent">Download users</BaseButton>
-      <BaseButton :appearance="Appearance.Accent">Bulk operations</BaseButton>
-      <BaseButton :appearance="Appearance.Accent">Refresh</BaseButton>
-      <BaseButton :appearance="Appearance.Accent">Manage view</BaseButton>
+      <BaseButton
+        :appearance="Appearance.Accent"
+        :onClick="() => navigateTo('/users/new')"
+        >New user</BaseButton
+      >
+      <BaseButton
+        :appearance="Appearance.Accent"
+        :onClick="() => console.log('Download users')"
+        >Download users</BaseButton
+      >
+      <BaseButton
+        :appearance="Appearance.Accent"
+        :onClick="() => console.log('Bulk operation')"
+        >Bulk operations</BaseButton
+      >
+      <BaseButton
+        :appearance="Appearance.Accent"
+        :onClick="() => console.log('Refresh')"
+        >Refresh</BaseButton
+      >
+      <BaseButton
+        :appearance="Appearance.Accent"
+        :onClick="() => console.log('Manage view')"
+        >Manage view</BaseButton
+      >
     </div>
 
     <div>{{ users.length }} user{{ users.length > 1 ? "s" : "" }} found.</div>
 
-    <BaseDataGrid> </BaseDataGrid>
+    <BaseDataGrid :items="users"> </BaseDataGrid>
   </div>
 </template>
 

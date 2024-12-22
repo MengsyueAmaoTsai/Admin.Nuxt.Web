@@ -25,6 +25,7 @@
         :aria-label="props.title"
         :title="props.title"
         :appearance="props.appearance"
+        @click="handleClick"
       >
         <!-- Icon start -->
         <slot />
@@ -54,6 +55,7 @@
       :aria-label="props.title"
       :title="props.title"
       :appearance="props.appearance"
+      @click="handleClick"
     >
       <!-- Icon start -->
       <slot />
@@ -109,6 +111,12 @@ const props = defineProps({
 });
 
 const loadingOverlay = props.loading && !props.iconStart && !props.iconEnd;
+
+const handleClick = (event) => {
+  if (props.onClick) {
+    props.onClick(event);
+  }
+};
 </script>
 
 <style scoped lang="scss">
