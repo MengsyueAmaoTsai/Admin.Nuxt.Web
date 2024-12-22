@@ -19,25 +19,34 @@
         :textFieldType="TextFieldType.Password"
         :required="true"
       />
-    </div>
 
-    <div>
-      <div>Email = {{ email }}</div>
-      <div>Name = {{ name }}</div>
-      <div>Password = {{ password }}</div>
+      <Button
+        :appearance="Appearance.Accent"
+        :loading="isBusy"
+        :onClick="createUser"
+      ></Button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { TextFieldType } from "~/components/Fluent/types";
+import { Appearance, TextFieldType } from "~/components/Fluent/types";
 
 useHead({
   title: "New user",
 });
+const isBusy = ref<boolean>(false);
+const email = ref<string>("");
+const name = ref<string>("");
+const password = ref<string>("");
 
-const email = ref("");
-const name = ref("");
-const password = ref("");
+const createUser = () => {
+  isBusy.value = true;
+
+  setTimeout(() => {
+    isBusy.value = false;
+    alert("User created.");
+  }, 1000);
+};
 </script>
 ~/components/Fluent/types

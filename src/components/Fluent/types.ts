@@ -3,6 +3,27 @@ export enum Orientation {
 	Horizontal = "horizontal",
 }
 
+export enum Appearance {
+	Neutral = "neutral",
+	Accent = "accent",
+	Hypertext = "hypertext",
+	Lightweight = "lightweight",
+	Outline = "outline",
+	Stealth = "stealth",
+	Filled = "filled",
+}
+
+export enum InputAppearance {
+	Filled = "filled",
+	Outline = "outline",
+}
+
+export enum ButtonType {
+	Button = "button",
+	Submit = "submit",
+	Reset = "reset",
+}
+
 export enum TextFieldType {
 	Text = "text",
 	Email = "email",
@@ -12,11 +33,6 @@ export enum TextFieldType {
 	Color = "color",
 	Search = "search",
 	Number = "number",
-}
-
-export enum InputAppearance {
-	Filled = "filled",
-	Outline = "outline",
 }
 
 export enum InputMode {
