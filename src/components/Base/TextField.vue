@@ -1,7 +1,31 @@
 <template>
   <div>
     <!-- InputLabel -->
-    <fluent-text-field>
+
+    <!-- @ref=? @attributes= -->
+    <fluent-text-field
+      :id="props.id"
+      :class="props.class"
+      :style="styleValue"
+      :readonly="props.readOnly"
+      :autofocus="props.autoFocus"
+      :placeholder="props.placeholder"
+      :type="props.textFieldType"
+      :list="props.dataList"
+      :maxLength="props.maxLength"
+      :minLength="props.minLength"
+      :pattern="props.pattern"
+      :size="props.size"
+      :spellcheck="props.spellcheck"
+      :disabled="props.disabled"
+      :name="props.name"
+      :required="props.required"
+      :appearance="props.appearance"
+      :value="props.value"
+      :current-value="currentValue"
+      @change="handleChange"
+      @input="handleInput"
+    >
       <slot />
     </fluent-text-field>
   </div>
@@ -15,6 +39,9 @@ const props = defineProps({
   id: String,
   class: String,
   style: String,
+  data: Object,
+  parentReference: Object,
+  additionalAttributes: Object,
 
   // InputPropsBase
   readOnly: Boolean,
@@ -67,7 +94,22 @@ const props = defineProps({
   },
 });
 
+// cssClass = combineClassNames(props.additionalAttributes, fieldClass)
+const inputBaseClass = new CssBuilder(props.class).build();
+const styleValue = new StyleBuilder(props.style).build();
+const currentValue = ref(props.value);
+
 onMounted(() => {
   console.log("TextField mounted", props);
 });
+
+const handleChange = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  console.log("HandleChange", target.value);
+};
+
+const handleInput = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  console.log("HandleInput", target.value);
+};
 </script>
