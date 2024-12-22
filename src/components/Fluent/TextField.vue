@@ -107,6 +107,7 @@ const props = defineProps({
 const inputBaseClass = new CssBuilder(props.class).build();
 const styleValue = new StyleBuilder(props.style).build();
 const currentValue = ref(props.value);
+// const isDisabled = computed(() => props.disabled || props.readOnly);
 
 onMounted(() => {
   console.log("TextField mounted", props);

@@ -15,10 +15,10 @@
       />
       <TextField
         v-model:value="password"
+        v-model:disabled="autoGeneratePassword"
         :label="'Password'"
         :textFieldType="TextFieldType.Password"
         :required="true"
-        :disable="autoGeneratePassword"
       />
       <Checkbox
         v-model:value="autoGeneratePassword"
@@ -33,8 +33,6 @@
         >Review + create</Button
       >
     </div>
-
-    Auto-generate password: {{ autoGeneratePassword }}
   </div>
 </template>
 
