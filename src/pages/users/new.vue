@@ -27,12 +27,16 @@
 
         <Stack>
           <Label>Password</Label>
-          <Stack :orientation="Orientation.Horizontal">
+
+          <Stack :orientation="Orientation.Vertical">
             <TextField
               :text-field-type="TextFieldType.Password"
               v-model="password"
             ></TextField>
-            <Checkbox></Checkbox>
+            <Checkbox
+              v-model="autoGeneratePassword"
+              label="Auto-generate password"
+            ></Checkbox>
           </Stack>
         </Stack>
 
@@ -60,7 +64,28 @@ useHead({
 
 const email = ref("");
 const name = ref("");
+const autoGeneratePassword = ref(true);
 const password = ref("");
+
+const generatePassword = (): string => {
+  const length = 8;
+  const charset =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    password += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+  console.log("generated password: ", password);
+  return password;
+};
+
+onMounted(() => {
+  if (autoGeneratePassword.value) {
+    password.value = generatePassword();
+  }
+
+  console.log("generated password: ", password.value);
+});
 </script>
 
 <style scoped lang="scss"></style>
