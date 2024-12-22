@@ -29,6 +29,8 @@
 <script setup lang="ts">
 import { InputAppearance, InputMode, type TextFieldType } from "./types";
 
+const emit = defineEmits(["update:modelValue"]);
+
 const props = defineProps({
   id: String,
   class: String,
@@ -77,11 +79,16 @@ const props = defineProps({
 const classValue = new CssBuilder().build();
 const styleValue = new CssBuilder().build();
 
-const changeHandler = (event: Event) => {
-  console.log(event);
-};
+const changeHandler = (event: Event) => {};
 
 const inputHandler = (event: Event) => {};
+
+onMounted(() => {
+  console.log("TextField mounted");
+
+  // Set control attribute
+  // Set dataList attribute
+});
 </script>
 
 <style scoped lang="scss"></style>

@@ -8,4 +8,5 @@
 pnpm run dev -o
 ```
 
-https://cn.vuejs.org/
+https://vuejs.org/
+https://nuxt.com/
