@@ -81,9 +81,7 @@ const changeHandler = (event: Event) => {
   console.log(event);
 };
 
-const inputHandler = (event: Event) => {
-  console.log(event);
-};
+const inputHandler = (event: Event) => {};
 </script>
 
 <style scoped lang="scss"></style>

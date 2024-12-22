@@ -1,44 +1,58 @@
 <template>
   <div>
-    <h2>Create new user</h2>
-    <p>Create a new user in system</p>
+    <BaseBreadcrumb></BaseBreadcrumb>
+    <BaseStack>
+      <header>
+        <h2>Create new user</h2>
+        <p>Create a new user in system</p>
+      </header>
 
-    <!-- Tabs -->
-    <BaseTabs>
-      <BaseTab :label="'Basics'">
-        <p>Create a new user.</p>
+      <!-- Tabs -->
+      <BaseTabs>
+        <BaseTab :label="'Basics'">
+          <BaseStack>
+            <p>Create a new user.</p>
 
-        <div style="display: flex">
-          <BaseLabel>Email</BaseLabel>
-          <BaseTextField
-            v-model="email"
-            :textFieldType="TextFieldType.Email"
-          ></BaseTextField>
-        </div>
+            <BaseStack>
+              <h3>Identity</h3>
+              <BaseStack>
+                <BaseStack>
+                  <BaseLabel>Email</BaseLabel>
+                  <BaseTextField
+                    v-model="email"
+                    :textFieldType="TextFieldType.Email"
+                  ></BaseTextField>
+                </BaseStack>
 
-        <div style="display: flex">
-          <BaseLabel>Name</BaseLabel>
-          <BaseTextField
-            v-model="name"
-            :textFieldType="TextFieldType.Text"
-          ></BaseTextField>
-        </div>
+                <BaseStack>
+                  <BaseLabel>Name</BaseLabel>
+                  <BaseTextField
+                    v-model="name"
+                    :textFieldType="TextFieldType.Text"
+                  ></BaseTextField>
+                </BaseStack>
 
-        <div style="display: flex">
-          <BaseLabel>Password</BaseLabel>
+                <BaseStack>
+                  <BaseLabel>Password</BaseLabel>
+                  <BaseTextField
+                    v-model="password"
+                    :textFieldType="TextFieldType.Password"
+                  ></BaseTextField>
+                </BaseStack>
+              </BaseStack>
+            </BaseStack>
+          </BaseStack>
+        </BaseTab>
 
-          <BaseTextField
-            v-model="password"
-            :textFieldType="TextFieldType.Password"
-          ></BaseTextField>
-        </div>
-      </BaseTab>
+        <BaseTab :label="'Properties'"> Properties content</BaseTab>
+        <BaseTab :label="'Assignments'">Assignments content</BaseTab>
+        <BaseTab :label="'Review + create'">Review + create</BaseTab>
+      </BaseTabs>
+    </BaseStack>
 
-      <BaseTab :label="'Properties'"> Properties content</BaseTab>
-      <BaseTab :label="'Assignments'">Assignments content</BaseTab>
-      <BaseTab :label="'Review + create'">Review + create</BaseTab>
-    </BaseTabs>
-
+    <div>Email: {{ email }}</div>
+    <div>Name: {{ name }}</div>
+    <div>Password: {{ password }}</div>
     <hr />
 
     <div style="display: flex">
