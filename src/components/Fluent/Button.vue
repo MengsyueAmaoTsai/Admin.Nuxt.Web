@@ -95,7 +95,9 @@ onMounted(() => {
 });
 
 const handleClick = (event: MouseEvent) => {
-  console.log("Handle click", event);
+  if (!props.disabled && props.onClick) {
+    props.onClick(event);
+  }
 };
 </script>
 

@@ -24,7 +24,8 @@
         :appearance="Appearance.Accent"
         :loading="isBusy"
         :onClick="createUser"
-      ></Button>
+        >Review + create</Button
+      >
     </div>
   </div>
 </template>
@@ -41,6 +42,7 @@ const name = ref<string>("");
 const password = ref<string>("");
 
 const createUser = () => {
+  console.log("create user");
   isBusy.value = true;
 
   setTimeout(() => {
