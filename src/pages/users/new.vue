@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { TextFieldType } from "~/components/Base/types";
+import { TextFieldType } from "~/components/Fluent/types";
 
 useHead({
   title: "New user",
@@ -40,3 +40,4 @@ const email = ref("");
 const name = ref("");
 const password = ref("");
 </script>
+~/components/Fluent/types

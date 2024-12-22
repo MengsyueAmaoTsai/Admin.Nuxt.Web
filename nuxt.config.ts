@@ -19,11 +19,13 @@ export default defineNuxtConfig({
 		},
 	],
 	css: ["~/assets/styles/main.scss"],
-	components: [{
-		path: '~/components/Base',
-		pathPrefix: false,
-		extensions: ['vue'],
-		global: true,
-		prefix: ''
-	}]
+	components: [
+		{
+			path: "~/components/Fluent",
+			pathPrefix: false,
+			extensions: ["vue"],
+			global: true,
+			prefix: "",
+		},
+	],
 });
