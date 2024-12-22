@@ -1,13 +1,41 @@
 <template>
   <div>
+    <!-- Rendering loading button -->
     <span
       v-if="loadingOverlay"
       :class="`${props.class} loading-button`"
       :style="props.style"
     >
-      <!-- render button -->
+      <fluent-button
+        :id="props.id"
+        :class="loadingOverlay ? '' : props.class"
+        :style="props.style"
+        :autofocus="props.autoFocus"
+        :form="props.formId"
+        :formaction="props.action"
+        :formenctype="props.enctype"
+        :formmethod="props.method"
+        :formnovalidate="props.noValidate"
+        :formtarget="props.target"
+        :type="props.type"
+        :value="props.value"
+        :current-value="props.currentValue"
+        :disabled="props.disabled"
+        :name="props.name"
+        :required="props.required"
+        :aria-label="props.title"
+        :title="props.title"
+        :appearance="props.appearance"
+        @click="handleClick"
+      >
+        <!-- Icon start -->
+        <slot />
+        <!-- Icon end -->
+      </fluent-button>
+
       <!-- Progress ring -->
     </span>
+
     <!-- ref, attributes, props.stopPropagation not set -->
     <fluent-button
       v-else
@@ -24,7 +52,7 @@
       :type="props.type"
       :value="props.value"
       :current-value="props.currentValue"
-      :disabled="props.disabled"
+      :disabled="props.disabled || props.loading"
       :name="props.name"
       :required="props.required"
       :aria-label="props.title"
@@ -101,4 +129,22 @@ const handleClick = (event: MouseEvent) => {
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.loading-button {
+  position: relative;
+  height: calc(
+    (var(--base-height-multiplier) + var(--density)) * var(--design-unit) * 1px
+  );
+  display: inline-block;
+}
+
+.loading-button ::deep fluent-progress-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  cursor: not-allowed;
+}
+</style>
