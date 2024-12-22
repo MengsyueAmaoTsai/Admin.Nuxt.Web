@@ -10,17 +10,17 @@
 
         <div>
           <BaseLabel>Email</BaseLabel>
-          <input />
+          <BaseTextField></BaseTextField>
         </div>
 
         <div>
           <BaseLabel>Email</BaseLabel>
-          <input />
+          <BaseTextField></BaseTextField>
         </div>
 
         <div>
           <BaseLabel>Password</BaseLabel>
-          <input />
+          <BaseTextField></BaseTextField>
         </div>
       </BaseTab>
 
