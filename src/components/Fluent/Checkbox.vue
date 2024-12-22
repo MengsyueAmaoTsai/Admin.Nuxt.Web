@@ -80,7 +80,12 @@ const props = defineProps({
   checkStateChanged: Function as PropType<(value: boolean) => void>,
 });
 
-const classValue = new CssBuilder(props.class).build();
+const classValue = new CssBuilder(props.class)
+  .addClass("disabled", props.disabled)
+  .addClass("checked", props.value)
+  .addClass("indeterminate", props.threeState && props.checkState)
+  .build();
+
 const styleValue = new StyleBuilder(props.style).build();
 const currentValue = props.value;
 
