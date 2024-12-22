@@ -8,19 +8,29 @@
       <BaseTab :label="'Basics'">
         <p>Create a new user.</p>
 
-        <div>
+        <div style="display: flex">
           <BaseLabel>Email</BaseLabel>
-          <BaseTextField></BaseTextField>
+          <BaseTextField
+            v-model="email"
+            :textFieldType="TextFieldType.Email"
+          ></BaseTextField>
         </div>
 
-        <div>
-          <BaseLabel>Email</BaseLabel>
-          <BaseTextField></BaseTextField>
+        <div style="display: flex">
+          <BaseLabel>Name</BaseLabel>
+          <BaseTextField
+            v-model="name"
+            :textFieldType="TextFieldType.Text"
+          ></BaseTextField>
         </div>
 
-        <div>
+        <div style="display: flex">
           <BaseLabel>Password</BaseLabel>
-          <BaseTextField></BaseTextField>
+
+          <BaseTextField
+            v-model="password"
+            :textFieldType="TextFieldType.Password"
+          ></BaseTextField>
         </div>
       </BaseTab>
 
@@ -52,11 +62,16 @@
 </template>
 
 <script setup lang="ts">
+import { TextFieldType } from "~/components/Base/TextField/types";
 import { Appearance } from "~/components/Base/types";
 
 useHead({
   title: "New user",
 });
+
+const email = ref("");
+const name = ref("");
+const password = ref("");
 </script>
 
 <style scoped lang="scss"></style>

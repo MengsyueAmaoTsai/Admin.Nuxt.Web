@@ -27,32 +27,7 @@
 </template>
 
 <script setup lang="ts">
-enum InputMode {
-  None = "none",
-  Text = "text",
-  Decimal = "decimal",
-  Numeric = "numeric",
-  Telephone = "tel",
-  Search = "search",
-  Email = "email",
-  Url = "url",
-}
-
-enum InputAppearance {
-  Filled = "filled",
-  Outline = "outline",
-}
-
-enum TextFieldType {
-  Text = "text",
-  Email = "email",
-  Password = "password",
-  Tel = "tel",
-  Url = "url",
-  Color = "color",
-  Search = "search",
-  Number = "number",
-}
+import { InputAppearance, InputMode, type TextFieldType } from "./types";
 
 const props = defineProps({
   id: String,
