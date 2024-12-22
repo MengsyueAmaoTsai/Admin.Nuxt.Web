@@ -24,6 +24,7 @@
         :appearance="Appearance.Accent"
         :loading="isBusy"
         :onClick="createUser"
+        :disabled="!email || !name || !password"
         >Review + create</Button
       >
     </div>
@@ -41,6 +42,10 @@ const email = ref<string>("");
 const name = ref<string>("");
 const password = ref<string>("");
 
+onMounted(() => {
+  password.value = generatePassword();
+});
+
 const createUser = () => {
   console.log("create user");
   isBusy.value = true;
@@ -49,6 +54,16 @@ const createUser = () => {
     isBusy.value = false;
     alert("User created.");
   }, 1000);
+};
+
+const generatePassword = (length = 10): string => {
+  const charset =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    password += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+  return password;
 };
 </script>
 ~/components/Fluent/types
