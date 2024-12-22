@@ -18,8 +18,12 @@
         :label="'Password'"
         :textFieldType="TextFieldType.Password"
         :required="true"
+        :disable="autoGeneratePassword"
       />
-
+      <Checkbox
+        v-model:value="autoGeneratePassword"
+        :label="'Auto-generate password'"
+      ></Checkbox>
       <Button
         :appearance="Appearance.Accent"
         :loading="isBusy"
@@ -28,6 +32,8 @@
         >Review + create</Button
       >
     </div>
+
+    Auto-generate password: {{ autoGeneratePassword }}
   </div>
 </template>
 
@@ -45,6 +51,7 @@ const isBusy = ref<boolean>(false);
 const email = ref<string>("");
 const name = ref<string>("");
 const password = ref<string>("");
+const autoGeneratePassword = ref<boolean>(true);
 
 onMounted(() => {
   password.value = generatePassword();
