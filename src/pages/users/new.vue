@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <Stack>
+      <Stack :orientation="Orientation.Vertical">
         <TextField
           v-model:value="email"
           :label="'Email'"
@@ -46,7 +46,11 @@
 </template>
 
 <script setup lang="ts">
-import { Appearance, TextFieldType } from "~/components/Fluent/types";
+import {
+  Appearance,
+  Orientation,
+  TextFieldType,
+} from "~/components/Fluent/types";
 import type { IUserService } from "~/resources/users";
 
 useHead({
