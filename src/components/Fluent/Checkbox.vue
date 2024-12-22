@@ -107,6 +107,9 @@ const handleCheckedChanged = async (event: Event) => {
     // await setCurrentCheckStateAsync(checked ?? false);
     // await setIntermediateAsync(false);
     // await updateAndRaiseCheckStateEventAsync(checked ?? false);
+    if (props.checkStateChanged) {
+      props.checkStateChanged(checked);
+    }
     emit("update:value", checked);
   }
 };

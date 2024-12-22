@@ -23,6 +23,7 @@
       <Checkbox
         v-model:value="autoGeneratePassword"
         :label="'Auto-generate password'"
+        :check-state-changed="autoGeneratePasswordStateChanged"
       ></Checkbox>
       <Button
         :appearance="Appearance.Accent"
@@ -84,6 +85,12 @@ const generatePassword = (length = 10): string => {
     password += charset.charAt(Math.floor(Math.random() * charset.length));
   }
   return password;
+};
+
+const autoGeneratePasswordStateChanged = (autoGeneratePassword: boolean) => {
+  if (autoGeneratePassword) {
+    password.value = generatePassword();
+  }
 };
 </script>
 ~/components/Fluent/types
