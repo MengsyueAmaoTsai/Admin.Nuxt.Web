@@ -1,22 +1,23 @@
 <template>
-  <div>
-    <fluent-tab
-      v-if="props.visible"
-      :class="props.labelClass"
-      :style="props.labelStyle"
-      :disabled="props.disabled"
-      :aria-label="props.label"
-    ></fluent-tab>
+  <fluent-tab
+    v-if="props.visible"
+    :class="props.labelClass"
+    :style="props.labelStyle"
+    :disabled="props.disabled"
+    :aria-label="props.label"
+  >
+    <!-- Icon -->
+    {{ props.label }}
+  </fluent-tab>
 
-    <fluent-tab-panel
-      :id="`${props.id}-panel`"
-      :class="classValue"
-      :style="styleValue"
-    >
-      <!-- Content -->
-      <slot />
-    </fluent-tab-panel>
-  </div>
+  <fluent-tab-panel
+    :id="`${props.id}-panel`"
+    :class="classValue"
+    :style="styleValue"
+  >
+    <!-- Content -->
+    <slot />
+  </fluent-tab-panel>
 </template>
 
 <script setup lang="ts">

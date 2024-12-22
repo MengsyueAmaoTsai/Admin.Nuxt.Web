@@ -5,7 +5,10 @@
 
     <!-- Tabs -->
     <BaseTabs>
-      <BaseTab></BaseTab>
+      <BaseTab :label="'Basics'"> Basics content </BaseTab>
+      <BaseTab :label="'Properties'"> Properties content</BaseTab>
+      <BaseTab :label="'Assignments'">Assignments content</BaseTab>
+      <BaseTab :label="'Review + create'">Review + create</BaseTab>
     </BaseTabs>
 
     <hr />

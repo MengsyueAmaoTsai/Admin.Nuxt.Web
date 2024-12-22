@@ -2,18 +2,19 @@
   <div>
     <h2>Development page</h2>
     <br />
-    <BaseDataGrid :items="dataGridItems"></BaseDataGrid>
+
+    <fluent-tabs activeid="entrees">
+      <fluent-tab id="apps">Appetizers</fluent-tab>
+      <fluent-tab id="entrees">Entrees</fluent-tab>
+      <fluent-tab id="desserts">Desserts</fluent-tab>
+
+      <fluent-tab-panel id="appsPanel"> Apps </fluent-tab-panel>
+      <fluent-tab-panel id="entreesPanel"> Entrees</fluent-tab-panel>
+      <fluent-tab-panel id="dessertsPanel"> Desserts </fluent-tab-panel>
+    </fluent-tabs>
   </div>
 </template>
 
-<script setup lang="ts">
-const dataGridItems = ref([
-  { id: "1", name: "John" },
-  {
-    id: "2",
-    name: "Alice",
-  },
-]);
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss"></style>
