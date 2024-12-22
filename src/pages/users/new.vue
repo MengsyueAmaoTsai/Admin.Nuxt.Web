@@ -5,7 +5,25 @@
 
     <!-- Tabs -->
     <BaseTabs>
-      <BaseTab :label="'Basics'"> Basics content </BaseTab>
+      <BaseTab :label="'Basics'">
+        <p>Create a new user.</p>
+
+        <div>
+          <BaseLabel>Email</BaseLabel>
+          <input />
+        </div>
+
+        <div>
+          <BaseLabel>Email</BaseLabel>
+          <input />
+        </div>
+
+        <div>
+          <BaseLabel>Password</BaseLabel>
+          <input />
+        </div>
+      </BaseTab>
+
       <BaseTab :label="'Properties'"> Properties content</BaseTab>
       <BaseTab :label="'Assignments'">Assignments content</BaseTab>
       <BaseTab :label="'Review + create'">Review + create</BaseTab>

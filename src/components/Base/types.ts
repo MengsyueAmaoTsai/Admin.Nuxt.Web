@@ -18,3 +18,12 @@ export enum VerticalAlignment {
 	Center = "center",
 	Bottom = "bottom",
 }
+
+export enum HorizontalAlignment {
+	Left = "left",
+	Start = "start",
+	Center = "center",
+	Right = "right",
+	End = "end",
+	Stretch = "stretch",
+}
