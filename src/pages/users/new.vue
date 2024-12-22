@@ -4,6 +4,9 @@
     <p>Create a new user in system</p>
 
     <!-- Tabs -->
+    <BaseTabs>
+      <BaseTab></BaseTab>
+    </BaseTabs>
 
     <hr />
 
