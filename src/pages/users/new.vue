@@ -1,37 +1,46 @@
 <template>
   <div>
     <div>
-      <TextField
-        v-model:value="email"
-        :label="'Email'"
-        :textFieldType="TextFieldType.Email"
-        :required="true"
-      />
-      <TextField
-        v-model:value="name"
-        :label="'Name'"
-        :textFieldType="TextFieldType.Text"
-        :required="true"
-      />
-      <TextField
-        v-model:value="password"
-        v-model:disabled="autoGeneratePassword"
-        :label="'Password'"
-        :textFieldType="TextFieldType.Password"
-        :required="true"
-      />
-      <Checkbox
-        v-model:value="autoGeneratePassword"
-        :label="'Auto-generate password'"
-        :check-state-changed="autoGeneratePasswordStateChanged"
-      ></Checkbox>
-      <Button
-        :appearance="Appearance.Accent"
-        :loading="isBusy"
-        :onClick="createUser"
-        :disabled="!email || !name || !password"
-        >Review + create</Button
-      >
+      <Stack>
+        <TextField
+          v-model:value="email"
+          :label="'Email'"
+          :textFieldType="TextFieldType.Email"
+          :required="true"
+        />
+
+        <TextField
+          v-model:value="name"
+          :label="'Name'"
+          :textFieldType="TextFieldType.Text"
+          :required="true"
+        />
+
+        <Stack>
+          <TextField
+            v-model:value="password"
+            v-model:disabled="autoGeneratePassword"
+            :label="'Password'"
+            :textFieldType="TextFieldType.Password"
+            :required="true"
+          />
+          <Checkbox
+            v-model:value="autoGeneratePassword"
+            :label="'Auto-generate password'"
+            :check-state-changed="autoGeneratePasswordStateChanged"
+          ></Checkbox>
+        </Stack>
+
+        <Stack>
+          <Button
+            :appearance="Appearance.Accent"
+            :loading="isBusy"
+            :onClick="createUser"
+            :disabled="!email || !name || !password"
+            >Review + create</Button
+          >
+        </Stack>
+      </Stack>
     </div>
   </div>
 </template>

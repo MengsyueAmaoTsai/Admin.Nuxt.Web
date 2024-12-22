@@ -3,6 +3,21 @@ export enum Orientation {
 	Horizontal = "horizontal",
 }
 
+export enum HorizontalAlignment {
+	Left = "left",
+	Start = "start",
+	Center = "center",
+	Right = "right",
+	End = "end",
+	Stretch = "stretch",
+}
+
+export enum VerticalAlignment {
+	Top = "top",
+	Center = "center",
+	Bottom = "bottom",
+}
+
 export enum Appearance {
 	Neutral = "neutral",
 	Accent = "accent",
