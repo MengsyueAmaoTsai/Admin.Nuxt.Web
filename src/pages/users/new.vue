@@ -33,10 +33,14 @@
 
 <script setup lang="ts">
 import { Appearance, TextFieldType } from "~/components/Fluent/types";
+import type { IUserService } from "~/resources/users";
 
 useHead({
   title: "New user",
 });
+
+const userService = useNuxtApp().$userService as IUserService;
+
 const isBusy = ref<boolean>(false);
 const email = ref<string>("");
 const name = ref<string>("");
@@ -46,14 +50,23 @@ onMounted(() => {
   password.value = generatePassword();
 });
 
-const createUser = () => {
-  console.log("create user");
+const createUser = async () => {
   isBusy.value = true;
 
-  setTimeout(() => {
+  try {
+    const response = await userService.createUser({
+      email: email.value,
+      name: name.value,
+      password: password.value,
+    });
+
+    alert("User created: " + response.id);
+    navigateTo("/users");
+  } catch (error) {
+    console.error(error);
+  } finally {
     isBusy.value = false;
-    alert("User created.");
-  }, 1000);
+  }
 };
 
 const generatePassword = (length = 10): string => {
