@@ -18,6 +18,7 @@
 
 <script setup lang="ts">
 import type { Color } from "../types";
+import { IconInfo } from "./icon";
 
 const props = defineProps({
   // ComponentPropsBase
@@ -34,7 +35,7 @@ const props = defineProps({
   color: String as PropType<Color>,
   customColor: String,
   width: String,
-  value: Object,
+  value: IconInfo,
   onClick: Function as PropType<(event: MouseEvent) => void>,
   focusable: {
     type: Boolean,

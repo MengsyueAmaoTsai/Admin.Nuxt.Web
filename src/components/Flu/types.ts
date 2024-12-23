@@ -152,3 +152,22 @@ export enum Color {
 	Disabled = 'var(--neutral-stroke-rest)',
 	Custom = 'var(--neutral-foreground-rest)'
 }
+
+export enum IconSize {
+	Size10 = 10,
+	Size12 = 12,
+	Size16 = 16,
+	Size20 = 20,
+	Size24 = 24,
+	Size28 = 28,
+	Size32 = 32,
+	Size48 = 48,
+	Custom = 0,
+}
+
+export enum IconVariant {
+	Filled = "filled",
+	Regular = "regular",
+	Light = "light",
+	Color = "color",
+}
