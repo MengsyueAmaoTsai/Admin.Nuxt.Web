@@ -76,6 +76,11 @@ export enum InputMode {
 	URL = "url",
 }
 
+export enum DataGridSelectMode {
+	Single = "single",
+	Multiple = "multiple",
+}
+
 export enum DataGridResizeType {
 	Discrete = "discrete",
 	Exact = "exact"
