@@ -13,6 +13,7 @@
       <Button :appearance="Appearance.Accent">Manage view</Button>
     </Stack>
 
+    <DataGrid :items="users"></DataGrid>
     <div v-for="user in users">
       {{ user }}
     </div>
