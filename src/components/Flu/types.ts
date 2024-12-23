@@ -138,3 +138,17 @@ export enum FontWeight {
 	Bold = 'bold',
 	Bolder = 'bolder',
 }
+
+export enum Color {
+	Neutral = 'var(--neutral-foreground-rest)',
+	Accent = 'var(--accent-fill-rest)',
+	Warning = 'var(--warning)',
+	Info = 'var(--info)',
+	Error = 'var(--error)',
+	Success = 'var(--success)',
+	Fill = 'var(--neutral-fill-rest)',
+	FillInverse = 'var(--neutral-fill-inverse-rest)',
+	Lightweight = 'var(--neutral-layer-1)',
+	Disabled = 'var(--neutral-stroke-rest)',
+	Custom = 'var(--neutral-foreground-rest)'
+}

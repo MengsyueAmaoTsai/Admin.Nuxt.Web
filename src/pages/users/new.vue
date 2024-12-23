@@ -1,5 +1,6 @@
 <template>
   <div>
+    <FluIcon></FluIcon>
     <FluStack :orientation="Orientation.Vertical">
       <FluTextField
         v-model:value="email"
