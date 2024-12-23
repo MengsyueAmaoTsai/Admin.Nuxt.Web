@@ -46,9 +46,7 @@ const props = defineProps({
 
 const rowId = ref<string>("");
 
-const classValue = new CssBuilder(props.class)
-  .addClass("fluent-data-grid-row")
-  .build();
+const classValue = new CssBuilder(props.class).build();
 
 const styleValue = new StyleBuilder(props.style).build();
 

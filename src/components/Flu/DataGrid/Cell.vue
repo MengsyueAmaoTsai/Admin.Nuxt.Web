@@ -43,8 +43,26 @@ const props = defineProps({
   childContent: Object,
 });
 
-const classValue = new CssBuilder(props.class).build();
-const styleValue = new StyleBuilder(props.style).build();
+const classValue = new CssBuilder(props.class)
+  .addClass("column-header", props.cellType === DataGridCellType.ColumnHeader)
+  .addClass("select-all", props.cellType === DataGridCellType.ColumnHeader) // && Column is SelectColumn<TGridItem>
+  .addClass("multiline-text") // when: Grid.MultiLine
+  // addClass(owner.class)
+  .build();
+
+const styleValue = new StyleBuilder(props.style)
+  //  .addStyle("grid-column", GridColumn.ToString(), () => (!Grid.Loading && Grid.Items is not null) || Grid.Virtualize)
+  //   .addStyle("text-align", "center", Column is SelectColumn<TGridItem>)
+  //   .addStyle("align-content", "center", Column is SelectColumn<TGridItem>)
+  //   .addStyle("padding-inline-start", "calc(((var(--design-unit)* 3) + var(--focus-stroke-width) - var(--stroke-width))* 1px)", Column is SelectColumn<TGridItem> && Owner.RowType == DataGridRowType.Default)
+  //   .addStyle("padding-top", "calc(var(--design-unit) * 2.5px)", Column is SelectColumn<TGridItem> && (Grid.RowSize == DataGridRowSize.Medium || Owner.RowType == DataGridRowType.Header))
+  //   .addStyle("padding-top", "calc(var(--design-unit) * 1.5px)", Column is SelectColumn<TGridItem> && Grid.RowSize == DataGridRowSize.Small && Owner.RowType == DataGridRowType.Default)
+  //   .addStyle("height", $"{Grid.ItemSize:0}px", () => !Grid.Loading && Grid.Virtualize && Owner.RowType == DataGridRowType.Default)
+  //   .addStyle("height", $"{(int)Grid.RowSize}px", () => !Grid.Loading && !Grid.Virtualize && Grid.Items is not null && !Grid.MultiLine)
+  //   .addStyle("height", "100%", InternalGridContext.TotalItemCount == 0 || (Grid.Loading && Grid.Items is null) || Grid.MultiLine)
+  //   .addStyle("min-height", "44px", Owner.RowType != DataGridRowType.Default)
+  //   .AddStyle(Owner.Style)
+  .build();
 
 const handleCellClick = () => {
   console.log("Cell click event");
