@@ -1,0 +1,100 @@
+<template>
+  <div>
+    <fluent-dialog :id="props.id" :class="classValue" :style="styleValue">
+      <slot />
+    </fluent-dialog>
+  </div>
+</template>
+
+<script setup lang="ts">
+const props = defineProps({
+  // ComponentPropsBase
+  id: String,
+  class: String,
+  style: String,
+  data: Object,
+  parentReference: Object,
+  additionalAttributes: Object,
+
+  // DialogProps
+});
+
+const classValue = new CssBuilder(props.class).build();
+const styleValue = new StyleBuilder(props.style).build();
+</script>
+
+<style scoped lang="scss">
+fluent-dialog::part(control) {
+  --dialog-padding: calc(var(--design-unit) * 6 * 1px);
+  position: relative;
+  padding: var(--dialog-padding);
+  width: calc(var(--dialog-width) - 2 * var(--dialog-padding));
+  height: calc(var(--dialog-height) - 2 * var(--dialog-padding));
+}
+
+fluent-dialog:has(div[class~="fluent-dialog-body"]):not(
+    :is(fluent-dialog[class~="right"], fluent-dialog[class~="left"])
+  )::part(control) {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "dialog-header"
+    "dialog-body"
+    "dialog-footer";
+}
+
+fluent-dialog[class~="right"]::part(control),
+fluent-dialog[class~="left"]::part(control) {
+  display: flex;
+  flex-direction: column;
+  border-radius: unset;
+  border-width: 0;
+  --dialog-height: 100dvh;
+  overflow-y: auto;
+}
+
+:is(fluent-dialog[class~="right"], fluent-dialog[class~="left"])
+  ::deep
+  .fluent-dialog-body {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+fluent-dialog[class~="right"]::part(control) {
+  position: absolute;
+  right: 0;
+}
+
+fluent-dialog[class~="left"]::part(control) {
+  position: absolute;
+  left: 0;
+}
+
+fluent-dialog ::deep .fluent-dialog-header {
+  grid-area: dialog-header;
+  padding: 0 0 var(--dialog-padding) 0;
+}
+
+fluent-dialog ::deep .fluent-dialog-footer {
+  grid-area: dialog-footer;
+  margin-top: auto;
+  padding: var(--dialog-padding) 0 0 0;
+}
+
+fluent-dialog:has(div[class~="fluent-dialog-body"])
+  ::deep
+  .fluent-dialog-footer {
+  grid-area: dialog-footer;
+  margin-top: auto;
+  padding-top: var(--dialog-padding);
+  right: 0px;
+}
+
+fluent-dialog ::deep .fluent-dialog-body {
+  grid-area: dialog-body;
+  width: 100%;
+  height: auto;
+  min-height: 80px;
+}
+</style>
