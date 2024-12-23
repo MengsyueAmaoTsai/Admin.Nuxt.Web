@@ -19,12 +19,7 @@
       >
     </FluStack>
 
-    <FluDataGrid :items="users">
-      <FluDataGridColumn :property="(u) => u.id" :sortable="true" />
-      <FluDataGridColumn :property="(u) => u.email" :sortable="true" />
-      <FluDataGridColumn :property="(u) => u.name" :sortable="true" />
-      <FluDataGridColumn :property="(u) => u.createdTime" :sortable="true" />
-    </FluDataGrid>
+    <FluDataGrid :items="users"> </FluDataGrid>
   </div>
 </template>
 

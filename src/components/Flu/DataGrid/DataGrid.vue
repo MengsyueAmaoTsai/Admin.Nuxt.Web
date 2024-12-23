@@ -20,11 +20,7 @@
         </FluDataGridRow>
       </thead>
 
-      <tbody>
-        <tr v-for="item in items">
-          <td>{{ item }}</td>
-        </tr>
-      </tbody>
+      <tbody></tbody>
     </table>
   </div>
 </template>
@@ -32,10 +28,10 @@
 <script setup lang="ts">
 import {
   DataGridCellType,
+  type DataGridResizeType,
   DataGridRowSize,
   DataGridRowType,
   GenerateHeaderOption,
-  type DataGridResizeType,
 } from "../types";
 
 const props = defineProps({
@@ -103,7 +99,7 @@ const props = defineProps({
   },
 });
 
-const columns = ref(["Column 1", "Column 2", "Column 3"]);
+const columns = ref([]);
 </script>
 
 <style scoped lang="scss">

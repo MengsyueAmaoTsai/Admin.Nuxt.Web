@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>PropertyColumn</div>
 </template>
 
 <script setup lang="ts">
@@ -45,6 +45,8 @@ const props = defineProps({
   comparer: Object,
   sortBy: Object,
 });
+
+console.log("Property: ", props.property);
 </script>
 
 <style></style>

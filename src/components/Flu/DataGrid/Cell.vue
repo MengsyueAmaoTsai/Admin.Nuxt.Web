@@ -6,11 +6,19 @@
       :style="styleValue"
       role="gridcell"
       tabindex="0"
+      @click="handleCellClick"
+      @keydown="handleCellKeyDown"
     >
       <slot />
     </td>
 
-    <th v-else :class="classValue" :style="styleValue">
+    <th
+      v-else
+      :class="classValue"
+      :style="styleValue"
+      @click="handleCellClick"
+      @keydown="handleCellKeyDown"
+    >
       <slot />
     </th>
   </div>
@@ -37,6 +45,14 @@ const props = defineProps({
 
 const classValue = new CssBuilder(props.class).build();
 const styleValue = new StyleBuilder(props.style).build();
+
+const handleCellClick = () => {
+  console.log("Cell click event");
+};
+
+const handleCellKeyDown = (event: KeyboardEvent) => {
+  console.log("Cell keydown event", event);
+};
 </script>
 
 <style scoped lang="scss">
