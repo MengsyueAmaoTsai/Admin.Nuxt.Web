@@ -35,7 +35,7 @@ const props = defineProps({
   customColor: String,
   width: String,
   value: Object,
-  onClick: Function,
+  onClick: Function as PropType<(event: MouseEvent) => void>,
   focusable: {
     type: Boolean,
     default: false,
@@ -45,11 +45,17 @@ const props = defineProps({
 const classValue = computed(() => new CssBuilder(props.class).build());
 const styleValue = computed(() => new StyleBuilder(props.style).build());
 
-const handleClick = (event: MouseEvent) => {
-  console.log("handleClick", event);
+const handleKeyDown = (event: KeyboardEvent) => {
+  if (props.onClick) {
+    if (event.key === "Enter" || event.key === "NumpadEnter") {
+      props.onClick(new MouseEvent("click"));
+    }
+  }
 };
 
-const handleKeyDown = (event: KeyboardEvent) => {
-  console.log("handleKeyDown", event);
+const handleClick = (event: MouseEvent) => {
+  if (props.onClick) {
+    props.onClick(event);
+  }
 };
 </script>
