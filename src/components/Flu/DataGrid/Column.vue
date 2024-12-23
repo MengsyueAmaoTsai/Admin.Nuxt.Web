@@ -1,5 +1,8 @@
 <template>
-  <div>Column</div>
+  <div>
+    Column:
+    <slot />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -38,6 +41,8 @@ const props = defineProps({
   },
   placeholderTemplate: Object,
   width: String,
+
+  property: Function,
 });
 </script>
 
