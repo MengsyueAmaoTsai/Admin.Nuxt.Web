@@ -1,8 +1,5 @@
 <template>
-  <div>
-    Column:
-    <slot />
-  </div>
+  <div></div>
 </template>
 
 <script setup lang="ts">
@@ -41,7 +38,13 @@ const props = defineProps({
   },
   placeholderTemplate: Object,
   width: String,
+
+  // PropertyColumnProps
+  property: Function,
+  format: String,
+  comparer: Object,
+  sortBy: Object,
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style></style>
