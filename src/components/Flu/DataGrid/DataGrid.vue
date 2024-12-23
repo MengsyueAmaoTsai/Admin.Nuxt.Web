@@ -3,6 +3,17 @@
     <table :id="props.id">
       <thead v-if="props.generateHeader !== GenerateHeaderOption.None">
         <!-- FluentDataGridRow -->
+        <FluDataGridRow
+          v-for="(col, index) in columns"
+          :rowType="
+            generateHeader === GenerateHeaderOption.Sticky
+              ? DataGridRowType.StickyHeader
+              : DataGridRowType.Header
+          "
+        >
+          <!-- Render column headers -->
+          {{ col }}
+        </FluDataGridRow>
       </thead>
 
       <tbody>
@@ -17,6 +28,7 @@
 <script setup lang="ts">
 import {
   DataGridRowSize,
+  DataGridRowType,
   GenerateHeaderOption,
   type DataGridResizeType,
 } from "../types";
@@ -85,6 +97,8 @@ const props = defineProps({
     default: false,
   },
 });
+
+const columns = ref(["Column 1", "Column 2", "Column 3"]);
 </script>
 
 <style scoped lang="scss"></style>

@@ -78,3 +78,15 @@ export enum DataGridRowSize {
 	Smaller = 24,
 	Large = 58
 }
+
+export enum DataGridRowType {
+	Default = "default",
+	Header = "header",
+	StickyHeader = "sticky-header",
+}
+
+export enum DataGridCellType{
+	Default = "default",
+	ColumnHeader = "columnheader",
+	RowHeader = "rowheader",
+}
