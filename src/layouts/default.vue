@@ -9,6 +9,7 @@
         :width="'100%'"
       >
         <!-- NavMenu -->
+        <NavMenu />
         <!-- BodyContent -->
         <slot />
       </FluStack>
