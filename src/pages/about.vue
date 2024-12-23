@@ -1,8 +1,7 @@
 <template>
   <div>
     <h2>About</h2>
-
-    <FluDataGrid :id="'123'"></FluDataGrid>
+    <FluDataGrid></FluDataGrid>
   </div>
 </template>
 

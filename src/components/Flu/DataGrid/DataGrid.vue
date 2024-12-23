@@ -1,8 +1,19 @@
 <template>
   <div>
-    Component is working
+    <table
+      ref="gridReference"
+      :id="$props.id"
+      :class="gridClass()"
+      :style="styleValue"
+    >
+      <thead v-if="props.generateHeaderOption !== GenerateHeaderOption.None">
+        <FluDataGridRow :rowType="rowType"> Table Header</FluDataGridRow>
+      </thead>
 
-    <table ref="gridReference" :id="$props.id"></table>
+      <tbody>
+        Table Body
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -10,9 +21,9 @@
 import {
   DataGridResizeType,
   DataGridRowSize,
+  DataGridRowType,
   GenerateHeaderOption,
 } from "../types";
-import { autoFitGridColumns, initialize } from "./DataGrid";
 
 const props = defineProps({
   // ComponentBase props
@@ -75,6 +86,11 @@ const props = defineProps({
 // keyCodeService
 const gridReference = ref<HTMLTableElement>();
 const columns = ref([]);
+const rowType = computed(() =>
+  props.generateHeaderOption === GenerateHeaderOption.Sticky
+    ? DataGridRowType.StickyHeader
+    : DataGridRowType.Header
+);
 // private readonly EventCallbackSubscriber<PaginationState> _currentPageItemsChanged = new EventCallbackSubscriber<PaginationState>();
 // _renderColumnHeaders = RenderColumnHeaders;
 // _renderNonVirtualizedRows = RenderNonVirtualizedRows;
@@ -101,10 +117,12 @@ const columns = ref([]);
 // private CancellationTokenSource? _pendingDataLoadCancellationTokenSource;
 // public bool? SortByAscending => _sortByAscending;
 
+const styleValue = computed(() => new StyleBuilder(props.style).build());
+
 onMounted(() => {
-  if (gridReference.value) {
-    initialize(gridReference.value, props.autoFocus);
-  }
+  // if (gridReference.value) {
+  //   initialize(gridReference.value, props.autoFocus);
+  // }
 
   saveStateToQueryString();
   // if (_checkColumnOptionsPosition && _displayOptionsForColumn is not null)
@@ -118,16 +136,29 @@ onMounted(() => {
   //       _ = Module?.InvokeVoidAsync("checkColumnPopupPosition", _gridReference, ".col-resize").AsTask();
   //   }
 
-  if (props.autoFit && gridReference.value) {
-    autoFitGridColumns(gridReference.value, columns.value.length);
-  }
+  // if (props.autoFit && gridReference.value) {
+  //   autoFitGridColumns(gridReference.value, columns.value.length);
+  // }
+
+  console.log(
+    "DataGrid component is working. Props:",
+    props,
+    gridReference.value
+  );
 });
 
-onUpdated(() => console.log("Updated"));
+onUnmounted(() => {});
 
 const saveStateToQueryString = () => {
   console.warn("[WRN] saveStateToQueryString not implemented");
 };
+
+const gridClass = () =>
+  new CssBuilder("fluent-data-grid")
+    .addClass(props.class)
+    .addClass("auto-fit", props.autoFit)
+    // .addClass("loading", Boolean(pendingDataLoadCAncellationTokenSource))
+    .build();
 </script>
 
 <style scoped lang="scss"></style>

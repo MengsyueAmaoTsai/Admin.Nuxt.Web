@@ -15,3 +15,21 @@ export enum DataGridRowSize {
 	Smaller = 24,
 	Large = 58,
 }
+
+export enum DataGridRowType {
+	Default = "default",
+	Header = "header",
+	StickyHeader = "stickyHeader",
+}
+
+export enum VerticalAlignment {
+	Top = "top",
+	Center = "center",
+	Bottom = "bottom",
+}
+
+export enum DataGridCellType {
+	Default = "default",
+	ColumnHeader = "columnHeader",
+	RowHeader = "rowHeader",
+}
