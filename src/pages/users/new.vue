@@ -31,6 +31,7 @@
     <FluButton
       :disabled="!email || !name || !password"
       @click="createUser"
+      :loading="isBusy"
       :appearance="Appearance.Accent"
       >Review + create</FluButton
     >

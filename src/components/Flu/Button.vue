@@ -33,7 +33,7 @@
         <!-- Icon end -->
       </fluent-button>
 
-      <!-- Progress ring -->
+      <FluProgressRing></FluProgressRing>
     </span>
 
     <!-- ref, attributes, props.stopPropagation not set -->
@@ -116,7 +116,9 @@ const props = defineProps({
   onClick: Function as PropType<(event: MouseEvent) => void>,
 });
 
-const loadingOverlay = props.loading && !props.iconStart && !props.iconEnd;
+const loadingOverlay = computed(
+  () => props.loading && !props.iconStart && !props.iconEnd
+);
 
 onMounted(() => {
   console.log("Button mounted");
