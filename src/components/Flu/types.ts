@@ -110,3 +110,9 @@ export enum DataGridCellType{
 	ColumnHeader = "columnheader",
 	RowHeader = "rowheader",
 }
+
+export enum ProgressStroke {
+	Small = 'small',
+	Normal = 'normal',
+	Large = 'large',
+}
