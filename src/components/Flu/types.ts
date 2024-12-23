@@ -3,6 +3,21 @@ export enum Orientation {
 	Horizontal = "horizontal",
 }
 
+export enum SortDirection {
+	Auto = "auto",
+	Ascending = "ascending",
+	Descending = "descending",
+
+}
+
+export enum Align {
+	Start = 'flex-start',
+	Center = 'center',
+	End = 'flex-end',
+	Stretch = 'stretch',
+	Baseline = 'baseline',
+}
+
 export enum HorizontalAlignment {
 	Left = "left",
 	Start = "start",
