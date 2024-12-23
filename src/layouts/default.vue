@@ -8,6 +8,8 @@
         :orientation="Orientation.Horizontal"
         :width="'100%'"
       >
+        <!-- NavMenu -->
+        <!-- BodyContent -->
         <slot />
       </FluStack>
 
