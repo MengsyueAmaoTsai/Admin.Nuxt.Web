@@ -10,6 +10,11 @@
       >
         <slot />
       </FluStack>
+
+      <FluFooter>
+        <a href="https://vuejs.org">About Vue.js</a>
+        <a href="https://nuxt.com">About Nuxt</a>
+      </FluFooter>
     </FluLayout>
   </div>
 </template>

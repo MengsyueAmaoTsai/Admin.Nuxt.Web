@@ -7,6 +7,3 @@
 ```powershell
 pnpm run dev -o
 ```
-
-https://vuejs.org/
-https://nuxt.com/
