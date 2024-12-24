@@ -12,7 +12,7 @@
       <button>Manage view</button>
     </div>
 
-    <FluDataGrid :loading="true"> </FluDataGrid>
+    <FluDataGrid :items="users"> slot</FluDataGrid>
 
     <hr />
 

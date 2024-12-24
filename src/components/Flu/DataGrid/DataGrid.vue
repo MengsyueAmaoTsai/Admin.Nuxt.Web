@@ -39,6 +39,40 @@
               <div>Loading...</div>
             </FluStack>
           </FluDataGridRow>
+
+          <template v-else>
+            <template v-if="props.virtualize">
+              <div v-if="!props.items">
+                <FluDataGridRow v-if="!manualGrid">
+                  <FluDataGridCell
+                    :class="'empty-content-cell'"
+                    :style="`grid-column: 1 / ${columns.length + 1}`"
+                  >
+                    {{ props.emptyContent || "No data to show!" }}
+                  </FluDataGridCell>
+                </FluDataGridRow>
+              </div>
+
+              <div v-else>Virtualize data grid</div>
+            </template>
+
+            <div v-else>
+              <div v-if="!props.items">
+                <FluDataGridRow v-if="!manualGrid">
+                  <FluDataGridCell
+                    :class="'empty-content-cell'"
+                    :style="`grid-column: 1 / ${columns.length + 1}`"
+                  >
+                    {{ props.emptyContent || "No data to show!" }}
+                  </FluDataGridCell>
+                </FluDataGridRow>
+              </div>
+
+              <div v-else>Render TItems</div>
+            </div>
+          </template>
+
+          <slot v-if="manualGrid" />
         </tbody>
       </table>
     </div>
