@@ -6,9 +6,22 @@
       :label="'Email'"
       v-model:value="newUser.email"
       :placeholder="'someone@example.com'"
+      :type="TextFieldType.Email"
     />
-    <FluTextField :label="'Name'" v-model:value="newUser.name" />
-    <FluTextField :label="'Password'" v-model:value="newUser.password" />
+    <FluTextField
+      :label="'Name'"
+      v-model:value="newUser.name"
+      :type="TextFieldType.Text"
+    />
+    <FluTextField
+      :label="'Password'"
+      v-model:value="newUser.password"
+      :type="TextFieldType.Password"
+    />
+    <FluCheckbox
+      v-model:value="autoGeneratePassword"
+      :label="'Auto-generate password'"
+    ></FluCheckbox>
 
     <div>
       <div>
@@ -27,8 +40,8 @@
 </template>
 
 <script setup lang="ts">
-import { Appearance } from "~/components/Flu/types";
-import { CreateUserRequest, IUserService } from "~/resources/users";
+import { Appearance, TextFieldType } from "~/components/Flu/types";
+import type { CreateUserRequest, IUserService } from "~/resources/users";
 
 useHead({
   title: "New user",
@@ -36,6 +49,8 @@ useHead({
 
 const userService = useNuxtApp().$userService as IUserService;
 const isBusy = ref<boolean>(false);
+
+const autoGeneratePassword = ref<boolean>(true);
 const newUser = ref<CreateUserRequest>({
   email: "",
   name: "",
@@ -47,12 +62,13 @@ const createUser = async (_: MouseEvent) => {
 
   try {
     const created = await userService.createUser(newUser.value);
+
+    alert(`User created: ${created.id}`);
   } catch (error) {
     alert(error);
   } finally {
     isBusy.value = false;
   }
-  alert("User created");
 };
 </script>
 
