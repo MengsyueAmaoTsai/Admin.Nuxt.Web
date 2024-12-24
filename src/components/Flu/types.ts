@@ -120,3 +120,47 @@ export enum FontWeight {
 	Bold = 'bold',
 	Bolder = 'bolder',
 }
+
+export enum DividerRole {
+	Separator = 'separator',
+	Presentation = 'presentation',
+}
+
+export enum IconSize {
+	Size10 = 10,
+	Size12 = 12,
+	Size16 = 16,
+	Size20 = 20,
+	Size24 = 24,
+	Size28 = 28,
+	Size32 = 32,
+	Size48 = 48,
+	Custom = 0
+}
+
+export enum IconVariant {
+	Filled = 'filled',
+	Regular = 'regular',
+	Light = 'light',
+	Color = 'color',
+}
+
+export enum InputMode {
+	None = 'none',
+	Text = 'text',
+	Decimal = 'decimal',
+	Numeric = 'numeric',
+	Telephone = 'tel',
+	Search = 'search',
+	Email = 'email',
+	URL = 'url',
+}
+
+export enum JustifyContent {
+	FlexStart = 'flex-start',
+	Center = 'center',
+	FlexEnd = 'flex-end',
+	SpaceBetween = 'space-between',
+	SpaceAround = 'space-around',
+	SpaceEvenly = 'space-evenly',
+}
