@@ -191,3 +191,9 @@ export enum SelectPosition {
 	Above = 'above',
 	Below = 'below',
 }
+
+export enum MenuItemRole {
+	MenuItem = 'menuitem',
+	MenuItemCheckbox = 'menuitemcheckbox',
+	MenuItemRadio = 'menuitemradio',
+}
