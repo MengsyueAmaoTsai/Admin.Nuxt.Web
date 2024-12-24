@@ -113,8 +113,21 @@ onMounted(() => {
   }
 });
 
-const handleChange = () => {};
-const handleInput = () => {};
+const handleChange = (event) => {};
+
+const handleInput = (event) => {
+  if (!props.immediate) {
+    return;
+  }
+
+  if (props.immediateDelay > 0) {
+    setTimeout(() => {
+      handleChange(event);
+    }, props.immediateDelay);
+  } else {
+    handleChange(event);
+  }
+};
 
 //#region
 const setControlAttribute = (id: string, attrName: string, value: string) => {
