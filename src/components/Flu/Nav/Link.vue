@@ -1,5 +1,30 @@
 <template>
-  <div></div>
+  <div>
+    <div
+      v-if="!props.owner"
+      :id="props.id"
+      :disabled="props.disabled"
+      :class="classValue"
+      :style="props.style"
+      role="menuitem"
+    >
+      <NuxtLink v-if="props.onClick && props.href" :to="props.href">
+        <div class="positioning-region">
+          <div class="content-region"><slot /></div>
+        </div>
+      </NuxtLink>
+
+      <div v-else class="positioning-region" title="@Tooltip">
+        <div class="content-region">
+          <div :class="linkClassValue" @onclick="handleClick">
+            <slot />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <FluMenuItem v-else></FluMenuItem>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -42,6 +67,8 @@ const classValue = computed(() =>
 const linkClassValue = computed(() =>
   new CssBuilder("fluent-nav-link").addClass("disabled", props.disabled).build()
 );
+
+const handleClick = (e: MouseEvent) => {};
 </script>
 
 <style scoped lang="scss">

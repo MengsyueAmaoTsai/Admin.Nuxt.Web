@@ -25,10 +25,6 @@
         <FluNavLink :href="'/'">Home</FluNavLink>
         <FluNavLink :href="'/users'">Users</FluNavLink>
         <FluNavLink :href="'/signal-sources'">Signal sources</FluNavLink>
-
-        <NuxtLink to="/">Home</NuxtLink>
-        <NuxtLink to="/users">Users</NuxtLink>
-        <NuxtLink to="/signal-sources">Signal sources</NuxtLink>
       </FluNavMenu>
     </nav>
   </div>
