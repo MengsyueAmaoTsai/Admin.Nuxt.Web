@@ -14,7 +14,22 @@
     </label>
 
     <nav class="sitenav" aria-labelledby="main-menu">
-      <FluNavMenu>Hello</FluNavMenu>
+      <FluNavMenu
+        :id="'main-menu'"
+        :collapsible="true"
+        :width="250"
+        :title="'Navigation menu'"
+        :custom-toggle="true"
+        :expanded="expanded"
+      >
+        <FluNavLink :href="'/'">Home</FluNavLink>
+        <FluNavLink :href="'/users'">Users</FluNavLink>
+        <FluNavLink :href="'/signal-sources'">Signal sources</FluNavLink>
+
+        <NuxtLink to="/">Home</NuxtLink>
+        <NuxtLink to="/users">Users</NuxtLink>
+        <NuxtLink to="/signal-sources">Signal sources</NuxtLink>
+      </FluNavMenu>
     </nav>
   </div>
 </template>

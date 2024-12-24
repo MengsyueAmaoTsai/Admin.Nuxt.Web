@@ -3,7 +3,7 @@
     <!-- FluPageScript -->
     <div
       ref="elementRef"
-      :id="props.id"
+      :id="navMenuId"
       :class="classValue"
       :style="styleValue"
       :aria-label="props.collapsible ? undefined : props.title"
@@ -12,7 +12,7 @@
     >
       <div
         v-if="props.collapsible"
-        :id="`${props.id}-expander`"
+        :id="`${navMenuId}-expander`"
         :aria-label="props.title"
         :aria-expanded="props.expanded"
         role="menuitem"
@@ -33,6 +33,8 @@
 </template>
 
 <script setup lang="ts">
+import { ComponentIdentifier } from "../core";
+
 const props = defineProps({
   // ComponentBase props
   id: String,
@@ -63,6 +65,8 @@ const props = defineProps({
   },
   childContent: Object,
 });
+
+const navMenuId = ref<string>(props.id ?? ComponentIdentifier.newId());
 
 const elementRef = ref<HTMLElement | null>(null);
 
