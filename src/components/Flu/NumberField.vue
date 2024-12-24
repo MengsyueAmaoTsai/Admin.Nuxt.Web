@@ -7,9 +7,32 @@
       :child-content="props.labelTemplate"
       :required="props.required"
     />
-    <fluent-text-field ref="elementRef">
+    <fluent-number-field
+      ref="elementRef"
+      :id="props.id"
+      :class="classValue"
+      :style="styleValue"
+      :readonly="props.readOnly"
+      :autofocus="props.autoFocus"
+      :hide-step="props.hideStep"
+      :placeholder="props.placeholder"
+      :list="props.dataList"
+      :maxlength="props.maxLength"
+      :minlength="props.minLength"
+      :size="props.size"
+      :step="props.step"
+      :max="props.readOnly ? props.value : props.max"
+      :min="props.readOnly ? props.value : props.min"
+      :value="props.value"
+      :disabled="props.disabled"
+      :name="props.name"
+      :required="props.required"
+      :appearance="props.appearance"
+      @change="handleChange"
+      @input="handleInput"
+    >
       <slot />
-    </fluent-text-field>
+    </fluent-number-field>
   </div>
 </template>
 
@@ -57,7 +80,10 @@ const props = defineProps({
   maxLength: { type: Number, default: 14 },
   minLength: { type: Number, default: 1 },
   size: { type: Number, default: 20 },
-  // step:
+  step: {
+    type: String,
+    default: "1",
+  },
   max: String,
   min: String,
   appearance: {
@@ -73,12 +99,17 @@ const props = defineProps({
 });
 
 const elementRef = ref<HTMLElement | null>(null);
+const classValue = computed(() => new CssBuilder().build());
+const styleValue = computed(() => new StyleBuilder(props.style).build());
 
 onMounted(() => {
   if (props.autoComplete && props.id) {
     setControlAttribute(props.id, "autocomplete", props.autoComplete);
   }
 });
+
+const handleChange = (event: Event) => {};
+const handleInput = (event: Event) => {};
 
 //#region
 const setControlAttribute = (id: string, attrName: string, value: string) => {
