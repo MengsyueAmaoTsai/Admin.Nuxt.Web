@@ -33,3 +33,11 @@ export enum DataGridCellType {
 	ColumnHeader = "columnHeader",
 	RowHeader = "rowHeader",
 }
+
+export enum Align {
+	Start = "flex-start",
+	Center = "center",
+	End = "flex-end",
+	Stretch = "stretch",
+	Baseline = "baseline",
+}

@@ -48,4 +48,22 @@ onMounted(() => {
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.sticky-header {
+  z-index: 3;
+}
+
+.hover:not(
+    [row-type="header"],
+    [row-type="sticky-header"],
+    .loading-content-row
+  ):hover
+  ::deep
+  td {
+  cursor: pointer;
+  background-color: var(
+    --datagrid-hover-color,
+    var(--neutral-fill-stealth-hover)
+  );
+}
+</style>
