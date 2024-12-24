@@ -31,7 +31,13 @@
 
         <tbody>
           <FluDataGridRow v-if="props.loading">
-            <FluStack> Loading...</FluStack>
+            <FluStack
+              :horizontalGap="3"
+              :horizontalAlignment="HorizontalAlignment.Center"
+            >
+              <!-- ProgressRing -->
+              <div>Loading...</div>
+            </FluStack>
           </FluDataGridRow>
         </tbody>
       </table>
@@ -47,6 +53,7 @@ import {
   DataGridRowSize,
   DataGridRowType,
   GenerateHeaderOption,
+  HorizontalAlignment,
 } from "../types";
 
 type ColumnBase = {
