@@ -8,6 +8,7 @@
         :orientation="Orientation.Horizontal"
         :width="'100%'"
       >
+        <NavMenu />
         <slot />
       </FluStack>
 
@@ -21,6 +22,7 @@
 
 <script setup lang="ts">
 import { Orientation } from "~/components/Flu/types";
+import NavMenu from "~/components/NavMenu.vue";
 
 useHead({
   titleTemplate: (chunk) =>
