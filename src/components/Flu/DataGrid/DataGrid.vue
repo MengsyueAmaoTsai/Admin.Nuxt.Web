@@ -191,28 +191,9 @@ const props = defineProps({
   autoFocus: { type: Boolean, default: false },
 });
 const gridReference = ref<HTMLTableElement>();
-const columns = ref<ColumnBase[]>([
-  {
-    index: 0,
-    align: Align.Start,
-    style: "",
-    cellContent: "Column 1",
-    rawCellContent: "Column 1",
-    tooltip: "Column 1",
-  },
-  {
-    index: 1,
-    align: Align.Center,
-    style: "",
-    cellContent: "Column 2",
-    rawCellContent: "Column 2",
-    tooltip: "Column 2",
-  },
-]);
-
+const columns = ref<ColumnBase[]>([]);
 const sortByColumn = ref<ColumnBase | undefined>(undefined);
 const sortByAscending = ref<boolean>();
-
 const rowType = computed(() =>
   props.generateHeaderOption === GenerateHeaderOption.Sticky
     ? DataGridRowType.StickyHeader
@@ -222,9 +203,9 @@ const manualGrid = computed(() => columns.value.length === 0);
 const styleValue = computed(() => new StyleBuilder(props.style).build());
 
 onMounted(() => {
-  // if (gridReference.value) {
-  //   initialize(gridReference.value, props.autoFocus);
-  // }
+  if (gridReference.value) {
+    initialize(gridReference.value, props.autoFocus);
+  }
 
   saveStateToQueryString();
   // if (_checkColumnOptionsPosition && _displayOptionsForColumn is not null)
@@ -283,6 +264,169 @@ const ariaSortValue = (column: ColumnBase) => {
       : "descending"
     : "none";
 };
+
+//#region Javascript
+const initialize = (grid: HTMLTableElement, autoFocus: boolean) => {
+  if (grid === null || grid === undefined) {
+    return;
+  }
+
+  // enableColumnResizing(grid)
+  let start = grid.querySelector("td:first-child");
+
+  if (autoFocus) {
+    start?.focus();
+  }
+
+  const cells = grid.querySelectorAll('[role="gridcell"]');
+
+  const keyboardNavigation = (sibling) => {
+    if (sibling !== null) {
+      start.focus();
+      sibling.focus();
+      start = sibling;
+    }
+  };
+
+  const handleBodyClick = (event: MouseEvent) => {
+    const columnOptionsElement = grid?.querySelector(".col-options");
+    if (
+      columnOptionsElement &&
+      event.composedPath().indexOf(columnOptionsElement) < 0
+    ) {
+      grid.dispatchEvent(
+        new CustomEvent("closecolumnoptions", { bubbles: true })
+      );
+    }
+    const columnResizeElement = grid?.querySelector(".col-resize");
+    if (
+      columnResizeElement &&
+      event.composedPath().indexOf(columnResizeElement) < 0
+    ) {
+      grid.dispatchEvent(
+        new CustomEvent("closecolumnresize", { bubbles: true })
+      );
+    }
+  };
+
+  const handleBodyKeyDown = (event: KeyboardEvent) => {
+    const columnOptionsElement = grid?.querySelector(".col-options");
+    if (columnOptionsElement) {
+      if (event.key === "Escape") {
+        grid.dispatchEvent(
+          new CustomEvent("closecolumnoptions", { bubbles: true })
+        );
+        grid.focus();
+      }
+      columnOptionsElement.addEventListener("keydown", (event) => {
+        if (
+          event.key === "ArrowRight" ||
+          event.key === "ArrowLeft" ||
+          event.key === "ArrowDown" ||
+          event.key === "ArrowUp"
+        ) {
+          event.stopPropagation();
+        }
+      });
+    }
+    const columnResizeElement = grid?.querySelector(".col-resize");
+    if (columnResizeElement) {
+      if (event.key === "Escape") {
+        grid.dispatchEvent(
+          new CustomEvent("closecolumnresize", { bubbles: true })
+        );
+        grid.focus();
+      }
+      columnResizeElement.addEventListener("keydown", (event) => {
+        if (
+          event.key === "ArrowRight" ||
+          event.key === "ArrowLeft" ||
+          event.key === "ArrowDown" ||
+          event.key === "ArrowUp"
+        ) {
+          event.stopPropagation();
+        }
+      });
+    }
+
+    // check if start is a child of grid
+    if (
+      start !== null &&
+      (grid.contains(start) || grid === start) &&
+      document.activeElement === start
+    ) {
+      const idx = start.cellIndex;
+
+      if (event.key === "ArrowUp") {
+        // up arrow
+        const previousRow = start.parentElement.previousElementSibling;
+        if (previousRow !== null) {
+          event.preventDefault();
+          const previousSibling = previousRow.cells[idx];
+          keyboardNavigation(previousSibling);
+        }
+      } else if (event.key === "ArrowDown") {
+        // down arrow
+        const nextRow = start.parentElement.nextElementSibling;
+        if (nextRow !== null) {
+          event.preventDefault();
+          const nextSibling = nextRow.cells[idx];
+          keyboardNavigation(nextSibling);
+        }
+      } else if (event.key === "ArrowLeft") {
+        // left arrow
+        event.preventDefault();
+        const previousSibling =
+          document.body.dir === "" || document.body.dir === "ltr"
+            ? start.previousElementSibling
+            : start.nextElementSibling;
+        keyboardNavigation(previousSibling);
+        event.stopPropagation();
+      } else if (event.key === "ArrowRight") {
+        // right arrow
+        event.preventDefault();
+        const nextsibling =
+          document.body.dir === "" || document.body.dir === "ltr"
+            ? start.nextElementSibling
+            : start.previousElementSibling;
+        keyboardNavigation(nextsibling);
+        event.stopPropagation();
+      }
+    } else {
+      start = document.activeElement;
+    }
+  };
+  for (const cell of cells) {
+    cell.columnDefinition = {
+      columnDataKey: "",
+      cellInternalFocusQueue: true,
+      cellFocusTargetCallback: (cell) => cell.children[0],
+    };
+
+    cell.addEventListener("keydown", (event) => {
+      if (
+        event.target.role !== "gridcell" &&
+        (event.key === "ArrowRight" || event.key === "ArrowLeft")
+      ) {
+        event.stopPropagation();
+      }
+    });
+
+    document.body.addEventListener("click", handleBodyClick);
+    document.body.addEventListener("mousedown", handleBodyClick);
+    document.body.addEventListener("keydown", handleBodyKeyDown);
+  }
+
+  return {
+    stop: () => {
+      document.body.removeEventListener("click", handleBodyClick);
+      document.body.removeEventListener("mousedown", handleBodyClick);
+      document.body.removeEventListener("keydown", handleBodyKeyDown);
+    },
+  };
+};
+
+//#endregion
 </script>
 
 <style scoped lang="scss">

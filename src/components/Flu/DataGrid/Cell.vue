@@ -54,15 +54,6 @@ const classValue = computed(() =>
 );
 const styleValue = computed(() => new StyleBuilder(props.style).build());
 
-onMounted(() => {
-  console.log("Cell class:", classValue.value);
-  console.log("Cell style:", styleValue.value);
-});
-
-onUnmounted(() => {
-  console.log("DataGridCell component is destroyed");
-});
-
 const handleOnCellClick = (event: MouseEvent) => {
   console.warn("handleOnCellClick", event);
 };

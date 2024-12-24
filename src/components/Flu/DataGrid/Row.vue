@@ -42,10 +42,6 @@ const props = defineProps({
 
 const classValue = computed(() => new CssBuilder(props.class).build());
 const styleValue = computed(() => new StyleBuilder(props.style).build());
-
-onMounted(() => {
-  console.log("Row component is mounted", props);
-});
 </script>
 
 <style scoped lang="scss">
