@@ -4,8 +4,9 @@
     <FluTextField :label="'Name'" />
     <FluTextField :label="'Description'" />
 
-    <FluLabel>Version</FluLabel>
+    <FluCombobox :label="'Stage'" :items="['A', 'B']" />
 
+    <FluLabel>Version</FluLabel>
     <FluStack :orientation="Orientation.Horizontal">
       <FluNumberField />
       <FluNumberField />

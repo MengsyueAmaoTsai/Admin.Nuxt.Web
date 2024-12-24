@@ -23,6 +23,9 @@
       :autofocus="props.autoFocus"
       :name="props.name"
     >
+      <fluent-option v-for="item in props.items" :value="item">
+        {{ item }}
+      </fluent-option>
     </fluent-combobox>
   </div>
 </template>
@@ -48,7 +51,7 @@ const props = defineProps({
   labelTemplate: Object,
   ariaLabel: String,
   required: Boolean,
-  value: [String, Number, Boolean],
+  value: String,
   valueChanged: Function as PropType<
     (value: string | number | boolean) => void
   >,

@@ -22,7 +22,7 @@ const props = defineProps({
   class: String,
   style: String,
   data: Object,
-  parentReference: HTMLElement,
+  parentReference: Object,
   additionalAttributes: Object,
 
   // InputBase props
