@@ -2,12 +2,16 @@
   <div>
     <div>
       <FluLabel>Id</FluLabel>
+      <FluLabel>{{ user?.id }}</FluLabel>
 
       <FluLabel>Email</FluLabel>
+      <FluLabel>{{ user?.email }}</FluLabel>
 
       <FluLabel>Name</FluLabel>
+      <FluLabel>{{ user?.name }}</FluLabel>
 
       <FluLabel>Created time</FluLabel>
+      <FluLabel>{{ user?.createdTime.toLocaleString() }}</FluLabel>
     </div>
     <hr />
     {{ user }}
