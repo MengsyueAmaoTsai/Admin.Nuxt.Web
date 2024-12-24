@@ -12,11 +12,13 @@
       <button>Manage view</button>
     </div>
 
-    <FluDataGrid :items="users"> slot</FluDataGrid>
-
+    <FluDataGrid :items="users">
+      <FluDataGridColumnBase>Id</FluDataGridColumnBase>
+      <FluDataGridColumnBase>Email</FluDataGridColumnBase>
+      <FluDataGridColumnBase>Name</FluDataGridColumnBase>
+      <FluDataGridColumnBase>Create time</FluDataGridColumnBase>
+    </FluDataGrid>
     <hr />
-
-    <div v-for="user in users">{{ user }}</div>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div>ColumnBase</div>
+  <div><slot /></div>
 </template>
 
 <script setup lang="ts">
