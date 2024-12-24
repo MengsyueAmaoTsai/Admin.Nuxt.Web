@@ -13,7 +13,8 @@
       <FluLabel>Created time</FluLabel>
       <FluLabel>{{ user?.createdTime.toLocaleString() }}</FluLabel>
     </div>
-    <hr />
+
+    <FluDivider />
     {{ user }}
   </div>
 </template>
