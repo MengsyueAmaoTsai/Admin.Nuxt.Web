@@ -176,7 +176,7 @@ export enum TextFieldType {
 	Number = 'number',
 }
 
-export enum FluentInputAppearance {
+export enum InputAppearance {
 	Filled = 'filled',
 	Outline = 'outline',
 }

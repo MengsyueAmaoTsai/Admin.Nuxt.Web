@@ -34,11 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  FluentInputAppearance as InputAppearance,
-  InputMode,
-  type TextFieldType,
-} from "./types";
+import { InputAppearance, InputMode, type TextFieldType } from "./types";
 
 const props = defineProps({
   // ComponentBase props
