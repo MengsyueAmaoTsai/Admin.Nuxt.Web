@@ -11,7 +11,8 @@
       <button>Refresh</button>
       <button>Manage view</button>
     </div>
-    <FluDataGrid> </FluDataGrid>
+
+    <FluDataGrid :loading="true"> </FluDataGrid>
 
     <hr />
 

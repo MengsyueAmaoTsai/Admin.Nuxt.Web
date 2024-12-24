@@ -22,12 +22,6 @@ export enum DataGridRowType {
 	StickyHeader = "stickyHeader",
 }
 
-export enum VerticalAlignment {
-	Top = "top",
-	Center = "center",
-	Bottom = "bottom",
-}
-
 export enum DataGridCellType {
 	Default = "default",
 	ColumnHeader = "columnHeader",
@@ -40,4 +34,24 @@ export enum Align {
 	End = "flex-end",
 	Stretch = "stretch",
 	Baseline = "baseline",
+}
+
+export enum HorizontalAlignment {
+	Left = "left",
+	Start = "start",
+	Center = "center",
+	Right = "right",
+	End = "end",
+	Stretch = "stretch",
+}
+
+export enum VerticalAlignment {
+	Top = "top",
+	Center = "center",
+	Bottom = "bottom",
+}
+
+export enum Orientation {
+	Horizontal = "horizontal",
+	Vertical = "vertical",
 }

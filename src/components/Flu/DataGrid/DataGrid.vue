@@ -29,7 +29,11 @@
           </FluDataGridRow>
         </thead>
 
-        <tbody></tbody>
+        <tbody>
+          <FluDataGridRow v-if="props.loading">
+            <FluStack> Loading...</FluStack>
+          </FluDataGridRow>
+        </tbody>
       </table>
     </div>
   </div>
