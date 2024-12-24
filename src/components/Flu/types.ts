@@ -102,7 +102,9 @@ export enum Typography
 }
 
 export enum Colors {
-	Neutral = 'var(--neutral-foreground-rest)'
+	Neutral = 'var(--neutral-foreground-rest)',
+
+	Custom = 'var(--neutral-foreground-rest)',
 }
 
 export enum FontWeight {

@@ -143,9 +143,42 @@ const bolder = computed(() => props.weight === FontWeight.Bolder);
 const defaultMarginBlock = computed(() => props.marginBlock === "default");
 
 const classValue = computed(() =>
-  new CssBuilder(props.class).addClass("fluent-typography").build()
+  new CssBuilder(props.class)
+    .addClass("fluent-typography")
+    .addClass(
+      "fluent-typo-left",
+      () =>
+        props.alignment === HorizontalAlignment.Left ||
+        props.alignment === HorizontalAlignment.Start
+    )
+    .addClass(
+      "fluent-typo-center",
+      () => props.alignment === HorizontalAlignment.Center
+    )
+    .addClass(
+      "fluent-typo-right",
+      () =>
+        props.alignment === HorizontalAlignment.Right ||
+        props.alignment === HorizontalAlignment.End
+    )
+    .build()
 );
-const styleValue = computed(() => new StyleBuilder(props.style).build());
+const styleValue = computed(() =>
+  new StyleBuilder()
+    .addStyle(
+      "color",
+      props.color,
+      () => Boolean(props.color) && props.color !== Colors.Custom
+    )
+    .addStyle("color", props.customColor, () => props.color === Colors.Custom)
+    .addStyle(
+      "margin-block",
+      props.marginBlock,
+      () => Boolean(props.marginBlock) && !defaultMarginBlock
+    )
+    .addStyle(props.style)
+    .build()
+);
 </script>
 
 <style scoped lang="scss">
