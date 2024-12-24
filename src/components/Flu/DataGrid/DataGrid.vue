@@ -209,6 +209,7 @@ const ariaSortValue = (column: ColumnBase) => {
   border-collapse: collapse;
   align-items: center;
   height: max-content;
+  margin-bottom: 0px;
 }
 
 thead,

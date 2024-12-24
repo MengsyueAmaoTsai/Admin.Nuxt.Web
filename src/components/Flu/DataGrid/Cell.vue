@@ -126,11 +126,6 @@ td.grid-cell-placeholder:after {
   align-content: start;
 }
 
-::deep .col-header-content {
-  display: flex;
-  flex-grow: 1;
-}
-
 .column-header {
   font-weight: 600;
   position: relative;
