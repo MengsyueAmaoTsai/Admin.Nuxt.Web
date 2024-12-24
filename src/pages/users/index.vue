@@ -3,7 +3,11 @@
     <h2>All users</h2>
 
     <div style="display: flex">
-      <FluButton :appearance="Appearance.Accent">New user</FluButton>
+      <FluButton
+        :appearance="Appearance.Accent"
+        :onClick="() => navigateTo('/users/new')"
+        >New user</FluButton
+      >
       <FluButton :appearance="Appearance.Accent">Delete</FluButton>
       <FluButton :appearance="Appearance.Accent">Download users</FluButton>
       <FluButton :appearance="Appearance.Accent">Bulk operations</FluButton>

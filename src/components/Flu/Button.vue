@@ -128,7 +128,9 @@ onMounted(() => {
 });
 
 const handleClick = (event: MouseEvent) => {
-  console.log(`[Button] clicked. Id: ${buttonId.value}`);
+  if (!props.disabled && props.onClick) {
+    props.onClick(event);
+  }
 };
 
 //#region
