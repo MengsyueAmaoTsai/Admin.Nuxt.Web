@@ -55,3 +55,9 @@ export enum Orientation {
 	Horizontal = "horizontal",
 	Vertical = "vertical",
 }
+
+export enum ProgressStroke {
+	Small = 'small',
+	Normal = 'normal',
+	Large = 'large',
+}

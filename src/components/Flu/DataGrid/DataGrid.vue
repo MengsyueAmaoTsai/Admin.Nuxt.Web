@@ -35,7 +35,7 @@
               :horizontalGap="3"
               :horizontalAlignment="HorizontalAlignment.Center"
             >
-              <!-- ProgressRing -->
+              <FluProgressRing :width="'24px'" />
               <div>Loading...</div>
             </FluStack>
           </FluDataGridRow>
