@@ -9,7 +9,11 @@
         :width="'100%'"
       >
         <NavMenu />
-        <slot />
+        <FluBodyContent :class="'body-content'">
+          <div class="content">
+            <slot />
+          </div>
+        </FluBodyContent>
       </FluStack>
 
       <FluFooter>
