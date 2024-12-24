@@ -164,3 +164,19 @@ export enum JustifyContent {
 	SpaceAround = 'space-around',
 	SpaceEvenly = 'space-evenly',
 }
+
+export enum TextFieldType {
+	Text = 'text',
+	Email = 'email',
+	Password = 'password',
+	Tel = 'tel',
+	Url = 'url',
+	Color = 'color',
+	Search = 'search',
+	Number = 'number',
+}
+
+export enum FluentInputAppearance {
+	Filled = 'filled',
+	Outline = 'outline',
+}

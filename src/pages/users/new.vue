@@ -2,6 +2,14 @@
   <div>
     <h2>Create new user</h2>
 
+    <FluTextField
+      :label="'Email'"
+      v-model:value="newUser.email"
+      :placeholder="'someone@example.com'"
+    />
+    <FluTextField :label="'Name'" v-model:value="newUser.name" />
+    <FluTextField :label="'Password'" v-model:value="newUser.password" />
+
     <div>
       <div>
         <FluButton
