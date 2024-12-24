@@ -98,8 +98,47 @@ const currentValue = ref("");
 const classValue = computed(() => new CssBuilder().build());
 const styleValue = computed(() => new StyleBuilder(props.style).build());
 
+onMounted(() => {
+  // First render
+  if (props.autoComplete && props.id) {
+    setControlAttribute(props.id, "autocomplete", props.autoComplete);
+  }
+
+  if (props.inputMode && props.id) {
+    setControlAttribute(props.id, "inputmode", props.inputMode);
+  }
+
+  if (props.dataList && props.id) {
+    setDataList(props.id, props.dataList);
+  }
+});
+
 const handleChange = () => {};
 const handleInput = () => {};
+
+//#region
+const setControlAttribute = (id: string, attrName: string, value: string) => {
+  const fieldElement = document
+    .querySelector("#" + id)
+    ?.shadowRoot?.querySelector("#control");
+
+  if (!!fieldElement) {
+    fieldElement?.setAttribute(attrName, value);
+  }
+};
+
+const setDataList = (id: string, dataListId: string) => {
+  const fieldElement = document.getElementById(id);
+  const dataList = document.getElementById(dataListId)?.cloneNode(true);
+
+  const shadowRoot = fieldElement.shadowRoot;
+  const shadowDataList = shadowRoot.getElementById(dataListId);
+  if (shadowDataList) {
+    shadowRoot.removeChild(shadowDataList);
+  }
+  shadowRoot.appendChild(dataList);
+};
+//#endregion
 </script>
 
 <style scoped lang="scss"></style>
