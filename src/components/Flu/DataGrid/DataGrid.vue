@@ -30,7 +30,7 @@
         </thead>
 
         <tbody>
-          <FluDataGridRow v-if="props.loading">
+          <FluDataGridRow v-if="effectiveLoadingValue">
             <FluStack
               :horizontalGap="3"
               :horizontalAlignment="HorizontalAlignment.Center"
@@ -201,6 +201,11 @@ const rowType = computed(() =>
 );
 const manualGrid = computed(() => columns.value.length === 0);
 const styleValue = computed(() => new StyleBuilder(props.style).build());
+const effectiveLoadingValue = computed(
+  () =>
+    props.loading ??
+    (props.itemsProvider !== undefined && props.itemsProvider !== null)
+);
 
 onMounted(() => {
   if (gridReference.value) {

@@ -2,9 +2,7 @@
   <div>
     <h2>All users</h2>
 
-    <div>{{ users.length }} user{{ users.length > 1 ? "s" : "" }} found</div>
-
-    <div>
+    <div style="display: flex">
       <FluButton :appearance="Appearance.Accent">New user</FluButton>
       <FluButton :appearance="Appearance.Accent">Delete</FluButton>
       <FluButton :appearance="Appearance.Accent">Download users</FluButton>
@@ -12,6 +10,8 @@
       <FluButton :appearance="Appearance.Accent">Refresh</FluButton>
       <FluButton :appearance="Appearance.Accent">Manage view</FluButton>
     </div>
+
+    <div>{{ users.length }} user{{ users.length > 1 ? "s" : "" }} found</div>
 
     <FluDataGrid :items="users">
       <FluDataGridColumnBase>Id</FluDataGridColumnBase>

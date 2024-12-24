@@ -122,12 +122,35 @@ if (!props.id && (!props.backgroundColor || !props.color)) {
 }
 
 onMounted(() => {
-  console.log(`[Button] mounted. Id: ${buttonId.value}`);
+  if (buttonId.value && props.type !== ButtonType.Button) {
+    updateProxy(buttonId.value);
+  }
 });
 
 const handleClick = (event: MouseEvent) => {
   console.log(`[Button] clicked. Id: ${buttonId.value}`);
 };
+
+//#region
+const updateProxy = (id: string) => {
+  if (!id) {
+    return;
+  }
+
+  const element = document.getElementById(id) as HTMLButtonElement;
+
+  // biome-ignore lint/complexity/useOptionalChain: <explanation>
+  if (element && element.form) {
+    if (element.form.id !== "") {
+      element.proxy.setAttribute("form", element.form.id);
+    } else {
+      console.warn(
+        "When the submit button is placed outside of the EditForm, make sure to supply an id attribute to the EditForm."
+      );
+    }
+  }
+};
+//#endregion
 </script>
 
 <style scoped lang="scss">
