@@ -100,3 +100,13 @@ export enum Typography
     H5 = 'h5',
     H6 = 'h6',
 }
+
+export enum Colors {
+	Neutral = 'var(--neutral-foreground-rest)'
+}
+
+export enum FontWeight {
+	Normal = 'normal',
+	Bold = 'bold',
+	Bolder = 'bolder',
+}

@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div>
+      <FluLabel>Id</FluLabel>
+
+      <FluLabel>Email</FluLabel>
+
+      <FluLabel>Name</FluLabel>
+
+      <FluLabel>Created time</FluLabel>
+    </div>
     <hr />
     {{ user }}
   </div>
