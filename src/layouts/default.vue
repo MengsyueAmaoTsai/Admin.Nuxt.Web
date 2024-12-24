@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot />
+    <FluLayout> <slot /> </FluLayout>
   </div>
 </template>
 
