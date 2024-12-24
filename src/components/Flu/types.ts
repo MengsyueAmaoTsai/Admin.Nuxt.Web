@@ -67,3 +67,19 @@ export enum SortDirection {
 	Ascending = "asc",
 	Descending = "desc",
 }
+
+export enum ButtonType {
+	Button = "button",
+	Submit = "submit",
+	Reset = "reset",
+}
+
+export enum Appearance {
+	Neutral = "neutral",
+	Accent = "accent",
+	Hypertext = "hypertext",
+	Lightweight = "lightweight",
+	Outline = "outline",
+	Stealth = "stealth",
+	Filled = "filled",
+}

@@ -5,11 +5,12 @@
     <div>{{ users.length }} user{{ users.length > 1 ? "s" : "" }} found</div>
 
     <div>
-      <button>New user</button>
-      <button>Delete</button>
-      <button>Download users</button>
-      <button>Refresh</button>
-      <button>Manage view</button>
+      <FluButton :appearance="Appearance.Accent">New user</FluButton>
+      <FluButton :appearance="Appearance.Accent">Delete</FluButton>
+      <FluButton :appearance="Appearance.Accent">Download users</FluButton>
+      <FluButton :appearance="Appearance.Accent">Bulk operations</FluButton>
+      <FluButton :appearance="Appearance.Accent">Refresh</FluButton>
+      <FluButton :appearance="Appearance.Accent">Manage view</FluButton>
     </div>
 
     <FluDataGrid :items="users">
@@ -23,8 +24,8 @@
 </template>
 
 <script setup lang="ts">
+import { Appearance } from "~/components/Flu/types";
 import { IUserService } from "~/resources/users";
-
 useHead({
   title: "Users",
 });
