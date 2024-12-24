@@ -197,3 +197,9 @@ export enum MenuItemRole {
 	MenuItemCheckbox = 'menuitemcheckbox',
 	MenuItemRadio = 'menuitemradio',
 }
+
+export enum InputFileMode {
+	SaveToTemporaryFolder = 'saveToTemporaryFolder',
+	Buffer = 'buffer',
+	Stream = 'stream',
+}
