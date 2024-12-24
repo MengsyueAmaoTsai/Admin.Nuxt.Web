@@ -56,8 +56,8 @@
               <div v-else>Virtualize data grid</div>
             </template>
 
-            <div v-else>
-              <div v-if="!props.items">
+            <template v-else>
+              <template v-if="!props.items">
                 <FluDataGridRow v-if="!manualGrid">
                   <FluDataGridCell
                     :class="'empty-content-cell'"
@@ -66,10 +66,47 @@
                     {{ props.emptyContent || "No data to show!" }}
                   </FluDataGridCell>
                 </FluDataGridRow>
-              </div>
+              </template>
 
-              <div v-else>Render TItems</div>
-            </div>
+              <template v-else>
+                <template v-if="!props.items">
+                  <FluDataGridRow v-if="!manualGrid">
+                    <FluDataGridCell
+                      :class="'empty-content-cell'"
+                      :style="`grid-column: 1 / ${columns.length + 1}`"
+                    >
+                      {{ props.emptyContent || "No data to show!" }}
+                    </FluDataGridCell>
+                  </FluDataGridRow>
+                </template>
+                <template v-else>
+                  <FluDataGridRow
+                    v-for="(rowItem, rowIndex) in props.items"
+                    :key="props.itemKey(rowItem)"
+                    :aria-rowindex="rowIndex"
+                    :class="props.rowClass ? props.rowClass(rowItem) : ''"
+                    :style="props.rowStyle ? props.rowStyle(rowItem) : ''"
+                    :item="rowItem"
+                  >
+                    <FluDataGridCell
+                      v-for="(column, colIndex) in columns"
+                      :gridColumn="colIndex + 1"
+                      :class="columnJustifyClass(column)"
+                      :style="column.style"
+                      :key="column"
+                      :item="rowItem"
+                      :title="
+                        column.tooltip ? column.rawCellContent : undefined
+                      "
+                      :aria-label="
+                        column.tooltip ? column.rawCellContent : undefined
+                      "
+                      >{{ column.cellContent }}</FluDataGridCell
+                    >
+                  </FluDataGridRow>
+                </template>
+              </template>
+            </template>
           </template>
 
           <slot v-if="manualGrid" />
@@ -93,6 +130,10 @@ import {
 type ColumnBase = {
   index: number;
   align: Align;
+  style: string;
+  tooltip: string;
+  rawCellContent: string;
+  cellContent: string;
 };
 
 const props = defineProps({
@@ -154,12 +195,21 @@ const columns = ref<ColumnBase[]>([
   {
     index: 0,
     align: Align.Start,
+    style: "",
+    cellContent: "Column 1",
+    rawCellContent: "Column 1",
+    tooltip: "Column 1",
   },
   {
     index: 1,
     align: Align.Center,
+    style: "",
+    cellContent: "Column 2",
+    rawCellContent: "Column 2",
+    tooltip: "Column 2",
   },
 ]);
+
 const sortByColumn = ref<ColumnBase | undefined>(undefined);
 const sortByAscending = ref<boolean>();
 

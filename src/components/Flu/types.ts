@@ -57,7 +57,13 @@ export enum Orientation {
 }
 
 export enum ProgressStroke {
-	Small = 'small',
-	Normal = 'normal',
-	Large = 'large',
+	Small = "small",
+	Normal = "normal",
+	Large = "large",
+}
+
+export enum SortDirection {
+	Auto = "auto",
+	Ascending = "asc",
+	Descending = "desc",
 }
