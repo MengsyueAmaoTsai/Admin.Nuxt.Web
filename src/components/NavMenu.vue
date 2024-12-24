@@ -13,8 +13,12 @@
     /> -->
     </label>
 
-    <nav>Menu</nav>
+    <nav class="sitenav" aria-labelledby="main-menu">
+      <FluNavMenu>Hello</FluNavMenu>
+    </nav>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const expanded = ref<boolean>(true);
+</script>
