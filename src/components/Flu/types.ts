@@ -180,3 +180,14 @@ export enum InputAppearance {
 	Filled = 'filled',
 	Outline = 'outline',
 }
+
+export enum ComboboxAutocomplete {
+	Inline = 'inline',
+	List = 'list',
+	Both = 'both',
+}
+
+export enum SelectPosition {
+	Above = 'above',
+	Below = 'below',
+}
